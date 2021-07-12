@@ -1,23 +1,25 @@
 <?php
 // Set your server key (Note: Server key for sandbox and production mode are different)
-$server_key = 'SB-Mid-server-d5YJL4tEEVpvZuUErMXYCKyg';
+$server_key = 'Mid-server-g_oGvM7hOm95_x9LbdplLHxg';
 // Set true for production, set false for sandbox
-$is_production = false;
+$is_production = true;
 
-$api_url = $is_production ? 
-  'https://app.midtrans.com/snap/v1/transactions' : 
+$api_url = $is_production ?
+  'https://app.midtrans.com/snap/v1/transactions' :
   'https://app.sandbox.midtrans.com/snap/v1/transactions';
 
 
 // Check if request doesn't contains `/charge` in the url/path, display 404
-if( !strpos($_SERVER['REQUEST_URI'], '/charge') ) {
-  http_response_code(404); 
-  echo "wrong path, make sure it's `/charge`"; exit();
+if (!strpos($_SERVER['REQUEST_URI'], '/charge')) {
+  http_response_code(404);
+  echo "wrong path, make sure it's `/charge`";
+  exit();
 }
 // Check if method is not HTTP POST, display 404
-if( $_SERVER['REQUEST_METHOD'] !== 'POST'){
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(404);
-  echo "Page not found or wrong HTTP request method is used"; exit();
+  echo "Page not found or wrong HTTP request method is used";
+  exit();
 }
 
 // get the HTTP POST body of the request
@@ -37,7 +39,8 @@ echo $charge_result['body'];
  * @param string  $server_key
  * @param string  $request_body
  */
-function chargeAPI($api_url, $server_key, $request_body){
+function chargeAPI($api_url, $server_key, $request_body)
+{
   $ch = curl_init();
   $curl_options = array(
     CURLOPT_URL => $api_url,
