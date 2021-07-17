@@ -1,8 +1,8 @@
 <?php
 // Set your server key (Note: Server key for sandbox and production mode are different)
-$server_key = 'Mid-server-g_oGvM7hOm95_x9LbdplLHxg';
+$server_key = 'SB-Mid-server-d5YJL4tEEVpvZuUErMXYCKyg';
 // Set true for production, set false for sandbox
-$is_production = true;
+$is_production = false;
 
 $api_url = $is_production ?
   'https://app.midtrans.com/snap/v1/transactions' :
